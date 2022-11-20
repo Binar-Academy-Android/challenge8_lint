@@ -3,7 +3,7 @@ package com.example.challangechapter6.model
 
 import com.google.gson.annotations.SerializedName
 
-data class responseProductItem(
+data class ResponseProductItem(
     @SerializedName("api_featured_image")
     var apiFeaturedImage: String?,
     @SerializedName("brand")

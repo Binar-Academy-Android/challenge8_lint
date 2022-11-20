@@ -3,7 +3,6 @@ package com.example.challangechapter6.blur
 import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.work.*
 import com.example.challangechapter6.IMAGE_MANIPULATION_WORK_NAME
 import com.example.challangechapter6.KEY_IMAGE_URI
@@ -16,21 +15,7 @@ import com.example.challangechapter6.workers.SaveImageToFileWorker
 class BlurViewModel(application: Application) : AndroidViewModel(application) {
 
     internal var imageUri: Uri? = null
-    internal var outputUri: Uri? = null
     private val workManager = WorkManager.getInstance(application)
-    internal val outputWorkInfos: LiveData<List<WorkInfo>>
-    internal val progressWorkInfoItems: LiveData<List<WorkInfo>>
-
-    init {
-        // This transformation makes sure that whenever the current work Id changes the WorkInfo
-        // the UI is listening to changes
-        outputWorkInfos = workManager.getWorkInfosByTagLiveData(TAG_OUTPUT)
-        progressWorkInfoItems = workManager.getWorkInfosByTagLiveData(TAG_PROGRESS)
-    }
-
-    internal fun cancelWork() {
-        workManager.cancelUniqueWork(IMAGE_MANIPULATION_WORK_NAME)
-    }
 
     /**
      * Creates the input data bundle which includes the Uri to operate on
@@ -103,7 +88,4 @@ class BlurViewModel(application: Application) : AndroidViewModel(application) {
         imageUri = uriOrNull(uri)
     }
 
-    internal fun setOutputUri(outputImageUri: String?) {
-        outputUri = uriOrNull(outputImageUri)
-    }
 }

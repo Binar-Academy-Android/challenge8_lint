@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/drawable-v24/ic_login_bk.xml" value="0.1665" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/drawable/button.xml" value="0.1405" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/drawable/ic_baseline_user.xml" value="0.1405" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/layout/activity_detail.xml" value="0.10328638497652583" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/layout/activity_favorite.xml" value="0.19202898550724637" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/layout/activity_login.xml" value="0.12395833333333334" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/layout/activity_profile.xml" value="0.264" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/layout/activity_register.xml" value="0.10643115942028986" />
+        <entry key="..\:/Binar/chal8_lint/ChallangeChapter6/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Program_Files/ChallangeChapter6-ebbc83e0a2443133b/app/src/main/res/layout/activity_main.xml" value="0.1762917933130699" />
         <entry key="..\:/Program_Files/ChallangeChapter6-ebbc83e0a2443133b/app/src/main/res/layout/list_item.xml" value="0.1762917933130699" />
         <entry key="..\:/Program_Files/challangeChapter6/app/src/main/res/drawable-v24/circularbordersolid.xml" value="0.229" />

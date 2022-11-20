@@ -1,27 +1,28 @@
 package com.example.challangechapter6.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.challangechapter6.databinding.ActivityLoginBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.challangechapter6.databinding.ActivitySplashscreenBinding
 
 
+@SuppressLint("CustomSplashScreen")
 class SplashscreenActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivitySplashscreenBinding
+    private lateinit var binding: ActivitySplashscreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashscreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var data = getSharedPreferences("registerData", Context.MODE_PRIVATE)
-        var username = data.getString("usernamelgn", null)
-        var pass = data.getString("passwordlgn", null)
+        val data = getSharedPreferences("registerData", Context.MODE_PRIVATE)
+        val username = data.getString("usernamelgn", null)
+        val pass = data.getString("passwordlgn", null)
 
         Handler(Looper.myLooper()!!).postDelayed({
             if(username != null && pass != null)

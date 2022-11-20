@@ -1,4 +1,4 @@
-@file:JvmName("WorkerUtils")
+@file:Suppress("DEPRECATION")
 package com.example.challangechapter6.workers
 
 import android.app.NotificationChannel

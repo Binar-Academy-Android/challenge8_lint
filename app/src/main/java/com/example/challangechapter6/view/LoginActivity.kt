@@ -9,9 +9,9 @@ import android.widget.Toast
 import com.example.challangechapter6.databinding.ActivityLoginBinding
 
 
-class LoginActivity() : AppCompatActivity() {
-    lateinit var binding: ActivityLoginBinding
-    lateinit var  sharedPrefs : SharedPreferences
+class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var  sharedPrefs : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,20 +21,20 @@ class LoginActivity() : AppCompatActivity() {
         binding.btnLogin.setOnClickListener{
             sharedPrefs = getSharedPreferences("registerData", Context.MODE_PRIVATE)
 
-            var usernameData = sharedPrefs.getString("username", null)
-            var passwordData = sharedPrefs.getString("pass", null)
+            val usernameData = sharedPrefs.getString("username", null)
+            val passwordData = sharedPrefs.getString("pass", null)
 
-            var usernamelgn = binding.username.text.toString()
-            var passwordlgn = binding.password.text.toString()
+            val usernamelgn = binding.username.text.toString()
+            val passwordlgn = binding.password.text.toString()
 
             if (usernamelgn == usernameData && passwordData == passwordlgn){
-                var addData = sharedPrefs.edit()
+                val addData = sharedPrefs.edit()
                 addData.putString("usernamelgn", usernamelgn)
                 addData.putString("passwordlgn", passwordlgn)
                 addData.apply()
                 Toast.makeText(this, "Login Sucsessfull", Toast.LENGTH_SHORT).show()
 
-                var move = Intent(this, MainActivity::class.java)
+                val move = Intent(this, MainActivity::class.java)
                 startActivity(move)
             }
             else
@@ -42,8 +42,8 @@ class LoginActivity() : AppCompatActivity() {
 
         }
 
-        binding.register.setOnClickListener(){
-            var move = Intent(this, RegisterActivity::class.java)
+        binding.register.setOnClickListener {
+            val move = Intent(this, RegisterActivity::class.java)
             startActivity(move)
         }
     }

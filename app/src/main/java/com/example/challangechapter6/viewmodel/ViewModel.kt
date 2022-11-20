@@ -2,7 +2,7 @@ package com.example.challangechapter6.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.challangechapter6.model.responseProductItem
+import com.example.challangechapter6.model.ResponseProductItem
 import com.example.challangechapter6.network.RestfullAPI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -11,24 +11,20 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class ViewModel @Inject constructor(var api : RestfullAPI) : ViewModel(){
+class ViewModel @Inject constructor(private var api : RestfullAPI) : ViewModel(){
 
-    lateinit var liveDataCar: MutableLiveData<List<responseProductItem>>
+    var liveDataCar: MutableLiveData<List<ResponseProductItem>> = MutableLiveData()
 
 
-    init {
-        liveDataCar = MutableLiveData()
-    }
-
-    fun getliveDataCar() : MutableLiveData<List<responseProductItem>> {
+    fun getliveDataCar() : MutableLiveData<List<ResponseProductItem>> {
         return  liveDataCar
     }
 
     fun callApiCar(){
-        api.getAllCar().enqueue(object : Callback<List<responseProductItem>> {
+        api.getAllCar().enqueue(object : Callback<List<ResponseProductItem>> {
             override fun onResponse(
-                call: Call<List<responseProductItem>>,
-                response: Response<List<responseProductItem>>
+                call: Call<List<ResponseProductItem>>,
+                response: Response<List<ResponseProductItem>>
             ) {
                 if (response.isSuccessful){
                     liveDataCar.postValue(response.body())
@@ -37,16 +33,16 @@ class ViewModel @Inject constructor(var api : RestfullAPI) : ViewModel(){
                 }
             }
 
-            override fun onFailure(call: Call<List<responseProductItem>>, t: Throwable) {
+            override fun onFailure(call: Call<List<ResponseProductItem>>, t: Throwable) {
                 liveDataCar.postValue(null)
             }
 
         })
 
-        api.getAllCar().enqueue(object : Callback<List<responseProductItem>> {
+        api.getAllCar().enqueue(object : Callback<List<ResponseProductItem>> {
             override fun onResponse(
-                call: Call<List<responseProductItem>>,
-                response: Response<List<responseProductItem>>
+                call: Call<List<ResponseProductItem>>,
+                response: Response<List<ResponseProductItem>>
             ) {
                 if (response.isSuccessful){
                     liveDataCar.postValue(response.body())
@@ -55,7 +51,7 @@ class ViewModel @Inject constructor(var api : RestfullAPI) : ViewModel(){
                 }
             }
 
-            override fun onFailure(call: Call<List<responseProductItem>>, t: Throwable) {
+            override fun onFailure(call: Call<List<ResponseProductItem>>, t: Throwable) {
                 liveDataCar.postValue(null)
             }
 
@@ -63,10 +59,10 @@ class ViewModel @Inject constructor(var api : RestfullAPI) : ViewModel(){
     }
 
     fun favoriteCar(){
-        api.favoriteCar().enqueue(object : Callback<List<responseProductItem>> {
+        api.favoriteCar().enqueue(object : Callback<List<ResponseProductItem>> {
             override fun onResponse(
-                call: Call<List<responseProductItem>>,
-                response: Response<List<responseProductItem>>
+                call: Call<List<ResponseProductItem>>,
+                response: Response<List<ResponseProductItem>>
             ) {
                 if (response.isSuccessful){
                     liveDataCar.postValue(response.body())
@@ -75,16 +71,16 @@ class ViewModel @Inject constructor(var api : RestfullAPI) : ViewModel(){
                 }
             }
 
-            override fun onFailure(call: Call<List<responseProductItem>>, t: Throwable) {
+            override fun onFailure(call: Call<List<ResponseProductItem>>, t: Throwable) {
                 liveDataCar.postValue(null)
             }
 
         })
 
-        api.getAllCar().enqueue(object : Callback<List<responseProductItem>> {
+        api.getAllCar().enqueue(object : Callback<List<ResponseProductItem>> {
             override fun onResponse(
-                call: Call<List<responseProductItem>>,
-                response: Response<List<responseProductItem>>
+                call: Call<List<ResponseProductItem>>,
+                response: Response<List<ResponseProductItem>>
             ) {
                 if (response.isSuccessful){
                     liveDataCar.postValue(response.body())
@@ -93,7 +89,7 @@ class ViewModel @Inject constructor(var api : RestfullAPI) : ViewModel(){
                 }
             }
 
-            override fun onFailure(call: Call<List<responseProductItem>>, t: Throwable) {
+            override fun onFailure(call: Call<List<ResponseProductItem>>, t: Throwable) {
                 liveDataCar.postValue(null)
             }
 

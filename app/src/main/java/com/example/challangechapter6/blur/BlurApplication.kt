@@ -6,7 +6,7 @@ import androidx.viewbinding.BuildConfig
 import androidx.work.Configuration
 import timber.log.Timber
 
-class BlurApplication() : Application(), Configuration.Provider {
+class BlurApplication : Application(), Configuration.Provider {
 
     override fun getWorkManagerConfiguration(): Configuration {
         return if (BuildConfig.DEBUG) {

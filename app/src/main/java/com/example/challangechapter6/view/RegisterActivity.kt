@@ -2,26 +2,23 @@ package com.example.challangechapter6.view
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.example.challangechapter6.databinding.ActivityRegisterBinding
 
 
 class RegisterActivity : AppCompatActivity() {
-    lateinit var binding: ActivityRegisterBinding
-    lateinit var  sharedPreferences: SharedPreferences
+    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var  sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnregister.setOnClickListener(){
+        binding.btnregister.setOnClickListener {
             val name        = binding.name.text.toString()
             val username    = binding.username.text.toString()
             val email       = binding.email.text.toString()
@@ -34,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
             sharedPreferences = getSharedPreferences("registerData", Context.MODE_PRIVATE)
 
             if(pass1 == pass2){
-                var addData = sharedPreferences.edit()
+                val addData = sharedPreferences.edit()
                 addData.putString("name", name)
                 addData.putString("username", username)
                 addData.putString("email", email)
@@ -46,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
                 addData.apply()
                 Toast.makeText(this, "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show()
 
-                var move = Intent(this, LoginActivity::class.java)
+                val move = Intent(this, LoginActivity::class.java)
                 startActivity(move)
             }
             else
@@ -56,8 +53,8 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 
-        binding.logintriger.setOnClickListener(){
-            var move = Intent(this, LoginActivity::class.java)
+        binding.logintriger.setOnClickListener {
+            val move = Intent(this, LoginActivity::class.java)
             startActivity(move)
         }
 

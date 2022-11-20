@@ -17,7 +17,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:weightSum="12">
+                android:weightSum="12"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     style="@style/parent"
@@ -45,7 +46,7 @@
 
 
                 <TextView
-                    android:textSize="25dp"
+                    android:textSize="25sp"
                     style="@style/headerText"
                     android:text="Register Form"
                     android:layout_marginTop="40dp"/>

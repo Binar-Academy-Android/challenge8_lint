@@ -1,25 +1,27 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.challangechapter6.view
 
 import android.Manifest
 import android.content.Context
-import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.example.challangechapter6.KEY_IMAGE_URI
 import com.example.challangechapter6.blur.BlurViewModel
 import com.example.challangechapter6.databinding.ActivityProfileBinding
-import java.util.*
 import timber.log.Timber
-import com.bumptech.glide.Glide
 
+@Suppress("PrivatePropertyName")
 class ProfileActivity : AppCompatActivity() {
     private val REQUEST_CODE_IMAGE = 100
     private val REQUEST_CODE_PERMISSIONS = 101
@@ -27,16 +29,16 @@ class ProfileActivity : AppCompatActivity() {
     private val KEY_PERMISSIONS_REQUEST_COUNT = "KEY_PERMISSIONS_REQUEST_COUNT"
     private val MAX_NUMBER_REQUEST_PERMISSIONS = 2
 
-    private val permissions = Arrays.asList(
+    private val permissions = listOf(
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
     private var permissionRequestCount: Int = 0
-    lateinit var binding : ActivityProfileBinding
+    private lateinit var binding : ActivityProfileBinding
 
     private lateinit var viewModel: BlurViewModel
-    lateinit var  sharedPrefs : SharedPreferences
+    private lateinit var  sharedPrefs : SharedPreferences
 
 
 
@@ -53,7 +55,7 @@ class ProfileActivity : AppCompatActivity() {
         requestPermissionsIfNecessary()
         // Get the ViewModel
 
-        viewModel = ViewModelProviders.of(this).get(BlurViewModel::class.java)
+        viewModel = ViewModelProviders.of(this)[BlurViewModel::class.java]
         val imageUriExtra = intent.getStringExtra(KEY_IMAGE_URI)
         if(imageUriExtra != "DEFAULT_KEY_IMAGE_URI"){
             viewModel.setImageUri(imageUriExtra)
@@ -64,24 +66,24 @@ class ProfileActivity : AppCompatActivity() {
 
 //       Set Data
         sharedPrefs = getSharedPreferences("registerData", Context.MODE_PRIVATE)
-        var nameData = sharedPrefs.getString("name", null)
-        var username = sharedPrefs.getString("username", null)
-        var email = sharedPrefs.getString("email", null)
-        var phone = sharedPrefs.getString("phone", null)
-        var aboutme = sharedPrefs.getString("aboutme", null)
-        var address = sharedPrefs.getString("address", null)
+        val nameData = sharedPrefs.getString("name", null)
+        val username = sharedPrefs.getString("username", null)
+        val email = sharedPrefs.getString("email", null)
+        val phone = sharedPrefs.getString("phone", null)
+        val aboutme = sharedPrefs.getString("aboutme", null)
+        val address = sharedPrefs.getString("address", null)
 
         binding.nama.setText(nameData)
         binding.username.setText(username)
         binding.phonenumber.setText(phone)
         binding.alamat .setText(address)
         binding.email.setText(email)
-        binding.aboutMe.setText(aboutme)
+        binding.aboutMe.text = aboutme
 
 
-        binding.logout.setOnClickListener(){
+        binding.logout.setOnClickListener {
             sharedPrefs = getSharedPreferences("registerData", Context.MODE_PRIVATE)
-            var addData = sharedPrefs.edit()
+            val addData = sharedPrefs.edit()
             addData.putString("passwordlgn", null)
             addData.putString("usernamelgn", null)
             startActivity(Intent(this, LoginActivity::class.java))
@@ -95,7 +97,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    fun profileUpdate(){
+    private fun profileUpdate(){
         val chooseIntent = Intent(
             Intent.ACTION_PICK,
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -165,9 +167,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun handleImageRequestResult(intent: Intent) {
         // If clipdata is available, we use it, otherwise we use data
-        val imageUri: Uri? = intent.clipData?.let {
-            it.getItemAt(0).uri
-        } ?: intent.data
+        val imageUri: Uri? = intent.clipData?.getItemAt(0)?.uri ?: intent.data
 
         if (imageUri == null) {
             Timber.e("Invalid input image Uri.")
